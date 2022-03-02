@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="br.diogo.kotlinrepolist.ReposActivity">
+
+    <data>
+
+        <variable
+            name="repository"
+            type="br.diogo.kotlinrepolist.data.model.Repository" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="6dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/ivAvatar"
+                android:layout_width="64dp"
+                android:layout_height="64dp" />
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@id/ivAvatar"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:text="@{`Repo name: `+repository.name}" />
+
+            <TextView
+                android:id="@+id/tvStars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvName"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@id/ivAvatar"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{`Stars: `+Integer.toString(repository.stargazers_count)}" />
+
+            <TextView
+                android:id="@+id/tvForks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvStars"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@id/ivAvatar"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{`Forks: ` + Integer.toString(repository.forks_count)}" />
+
+
+            <TextView
+                android:id="@+id/tvLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvForks"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@id/ivAvatar"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{`Owner: `+repository.owner.login}" />
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
