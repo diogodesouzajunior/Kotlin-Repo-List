@@ -6,7 +6,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DogCeoDataSource(val dogCeoApi: DogCeoApi) : RepoDataSource {
+class RepoCeoDataSource(val RepoCeoApi: RepoCeoApi) : RepoDataSource {
     override fun save(repository: Repository) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -18,12 +18,12 @@ class DogCeoDataSource(val dogCeoApi: DogCeoApi) : RepoDataSource {
         offline: () -> Unit,
         page: Int
     ) {
-        val call = dogCeoApi.listRepos("stars", page)
-        call.enqueue(object : Callback<DogCeoResponse> {
+        val call = RepoCeoApi.listRepos("stars", page)
+        call.enqueue(object : Callback<RepoCeoResponse> {
 
             override fun onResponse(
-                call: Call<DogCeoResponse>,
-                response: Response<DogCeoResponse>
+                call: Call<RepoCeoResponse>,
+                response: Response<RepoCeoResponse>
             ) {
                 if (response.isSuccessful) {
                     val repos = mutableListOf<Repository>()
@@ -36,7 +36,7 @@ class DogCeoDataSource(val dogCeoApi: DogCeoApi) : RepoDataSource {
                 }
             }
 
-            override fun onFailure(call: Call<DogCeoResponse>, t: Throwable?) {
+            override fun onFailure(call: Call<RepoCeoResponse>, t: Throwable?) {
                 failure()
             }
         })

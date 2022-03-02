@@ -2,4 +2,4 @@ package br.diogo.kotlinrepolist.data.remote
 
 import br.diogo.kotlinrepolist.data.model.Repository
 
-data class DogCeoResponse(var status: String? = null, var items: List<Repository>? = null)
+data class RepoCeoResponse(var status: String? = null, var items: List<Repository>? = null)

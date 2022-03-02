@@ -5,9 +5,9 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 
-interface DogCeoApi {
+interface RepoCeoApi {
 
     @GET("search/repositories?q=language:kotlin")
-    fun listRepos(@Query("sort") sort: String, @Query("page") page: Int): Call<DogCeoResponse>
+    fun listRepos(@Query("sort") sort: String, @Query("page") page: Int): Call<RepoCeoResponse>
 
 }

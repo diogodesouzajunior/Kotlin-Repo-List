@@ -19,8 +19,8 @@ import br.diogo.kotlinrepolist.data.local.RepoCeoLocalDataSource
 import br.diogo.kotlinrepolist.data.local.RepositoryDao
 import br.diogo.kotlinrepolist.data.model.Repository
 import br.diogo.kotlinrepolist.data.model.interfaces.IAdapterDataSource
-import br.diogo.kotlinrepolist.data.remote.DogCeoApi
-import br.diogo.kotlinrepolist.data.remote.DogCeoDataSource
+import br.diogo.kotlinrepolist.data.remote.RepoCeoApi
+import br.diogo.kotlinrepolist.data.remote.RepoCeoDataSource
 import br.diogo.kotlinrepolist.databinding.ReposFragmentBinding
 import br.diogo.kotlinrepolist.repos.ReposAdapter
 import br.diogo.kotlinrepolist.repos.ReposViewModel
@@ -97,9 +97,9 @@ class ReposFragment : Fragment() {
     fun createViewModel(application: Application): ReposViewModel {
         val retrofit = Retrofit.Builder().baseUrl("https://api.github.com/")
             .addConverterFactory(GsonConverterFactory.create()).build()
-        val dogCeoDataSource = DogCeoDataSource(retrofit.create(DogCeoApi::class.java))
+        val RepoCeoDataSource = RepoCeoDataSource(retrofit.create(RepoCeoApi::class.java))
         val localDataSource = RepoCeoLocalDataSource(repoDao(application), AppExecutors())
-        val repository = RepoRepository(dogCeoDataSource, localDataSource)
+        val repository = RepoRepository(RepoCeoDataSource, localDataSource)
 
         val factory = ReposViewModelFactory(repository, application)
 

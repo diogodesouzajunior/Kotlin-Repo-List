@@ -5,7 +5,7 @@ import br.diogo.kotlinrepolist.data.model.Repository
 
 class RepoRepository(
     private val remoteDataSource: RepoDataSource,
-    private val dogCeoLocalDataSource: RepoCeoLocalDataSource
+    private val RepoCeoLocalDataSource: RepoCeoLocalDataSource
 ) : RepoDataSource {
     override fun save(repository: Repository) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
@@ -19,11 +19,11 @@ class RepoRepository(
     ) {
 
         remoteDataSource.listAll({
-            it.forEach(dogCeoLocalDataSource::save)
+            it.forEach(RepoCeoLocalDataSource::save)
             success(it)
 
         }, {
-            dogCeoLocalDataSource.listAll(success, failure, offline, page)
+            RepoCeoLocalDataSource.listAll(success, failure, offline, page)
         }, {}, page)
     }
 
